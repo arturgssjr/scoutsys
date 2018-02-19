@@ -12,26 +12,7 @@
 
                     {!! Form::open(['route' => 'user.store']) !!}
 
-                        <div class="form-group row">
-                            {!! Form::label('name', 'Nome', ['class' => 'col-md-2 col-form-label']) !!}
-                            <div class="col-md-10">
-                                {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            {!! Form::label('email', 'E-mail', ['class' => 'col-md-2 col-form-label']) !!}
-                            <div class="col-md-10">
-                                {!! Form::text('email', null, ['class' => 'form-control']) !!}
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            {!! Form::label('profile', 'Perfil', ['class' => 'col-md-2 col-form-label']) !!}
-                            <div class="col-md-10">
-                                {!! Form::select('profile[]', $profiles, null, ['class' => 'form-control', 'multiple']) !!}
-                            </div>
-                        </div>
+                    @include('users._form')
 
                         <div class="form-group row">
                             <div class="col-md-6 col-md-offset-4">

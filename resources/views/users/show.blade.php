@@ -11,20 +11,20 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>
+                                <th>Data de Nascimento</th>
                                 <th>E-mail</th>
-                                <th>Perfil</th>
+                                <th>Apelido</th>
+                                <th>Permissão</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th>{{ $user->id }}</th>
                                 <td>{{ $user->name }}</td>
+                                <td>{{ $user->birth }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>
-                                    @foreach($user->profiles as $profile)
-                                    <a href="{{ route('profile.show', $profile->id) }}">{{ $profile->name }}</a>
-                                    @endforeach
-                                </td>
+                                <td>{{ $user->nickname }}</td>
+                                <td>{{ $user->permission }}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -11,12 +11,14 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>
+                                <th>Fundação</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th>{{ $team->id }}</th>
                                 <td>{{ $team->name }}</td>
+                                <td>{{ $team->foundation }}</td>
                             </tr>
                         </tbody>
                     </table>

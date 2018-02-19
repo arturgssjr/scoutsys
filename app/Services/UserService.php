@@ -3,7 +3,6 @@
 namespace scoutsys\Services;
 
 use scoutsys\Interfaces\UserRepository;
-use scoutsys\Interfaces\ProfileRepository;
 
 class UserService
 {
@@ -23,13 +22,11 @@ class UserService
             $data = array_merge($data, $password);
         }
         $user = $this->userRepository->create($data);
-        $user->profiles()->attach($data['profile']);
     }
 
     public function update(array $data, $id)
     {
         //dd($data['profile']);
         $user = $this->userRepository->update($data, $id);
-        $user->profiles()->sync($data['profile']);
     }
 }

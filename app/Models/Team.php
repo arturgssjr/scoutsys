@@ -2,6 +2,7 @@
 
 namespace scoutsys\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
@@ -24,7 +25,10 @@ class Team extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'foundation'
+    ];
 
     public function users()
     {

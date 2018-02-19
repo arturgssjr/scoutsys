@@ -17,6 +17,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>
+                                <th>Fundação</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
@@ -25,6 +26,7 @@
                             <tr>
                                 <th scope="row">{{ $team->id }}</th>
                                 <td>{{ $team->name }}</td>
+                                <td>{{ date('d/m/Y', strtotime($team->foundation)) }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-outline-info" role="button" href="{{ route('team.show', $team->id) }}">
                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -32,7 +34,7 @@
                                     <a class="btn btn-sm btn-outline-warning" role="button" href="{{ route('team.edit', $team->id) }}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </a>
-                                    <button class="btn btn-sm btn-outline-danger load-confirmation-modal" role="button" data-url="{{ route('team.destroy', $team->id) }}" data-type="Perfil" data-team="{{ $team->name }}" data-target="#confirmation-modal" data-toggle="modal">
+                                    <button class="btn btn-sm btn-outline-danger load-confirmation-modal" role="button" data-url="{{ route('team.destroy', $team->id) }}" data-type="Perfil" data-name="{{ $team->name }}" data-target="#confirmation-modal" data-toggle="modal">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </td>

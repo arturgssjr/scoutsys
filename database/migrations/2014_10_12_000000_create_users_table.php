@@ -17,6 +17,9 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->date('birth')->nullable();
+            $table->string('nickname')->nullable();
+            $table->string('permission')->default('app.player'); // app.player, app.admin, app.coach      
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->softDeletes();

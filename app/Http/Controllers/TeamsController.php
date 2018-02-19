@@ -4,7 +4,6 @@ namespace scoutsys\Http\Controllers;
 
 use scoutsys\Validators\TeamValidator;
 use scoutsys\Interfaces\TeamRepository;
-use scoutsys\Interfaces\UserRepository;
 use scoutsys\Http\Requests\TeamCreateRequest;
 use scoutsys\Http\Requests\TeamUpdateRequest;
 use Prettus\Validator\Contracts\ValidatorInterface;
@@ -13,14 +12,12 @@ use Prettus\Validator\Exceptions\ValidatorException;
 class TeamsController extends Controller
 {
     protected $teamRepository;
-    protected $userRepository;
     protected $teamValidator;
 
-    public function __construct(TeamRepository $teamRepository, TeamValidator $teamValidator, UserRepository $userRepository)
+    public function __construct(TeamRepository $teamRepository, TeamValidator $teamValidator)
     {
         $this->teamRepository = $teamRepository;
         $this->teamValidator  = $teamValidator;
-        $this->userRepository  = $userRepository;
     }
 
     public function index()
@@ -32,14 +29,20 @@ class TeamsController extends Controller
 
     public function store(TeamCreateRequest $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        $data = $request->all();
+        try {
+            $this->teamRepository->create($data);
+        } catch (ValidatorException $e) {
+            throw $e->getMessage();
+        }
+
+        return redirect()->route('team.index');
     }
 
     public function create()
     {
-        $users = $this->userRepository->all();
-        
-        return view('teams.create', compact('users'));
+        return view('teams.create');
     }
 
     public function show($id)
@@ -58,9 +61,17 @@ class TeamsController extends Controller
 
     public function update(TeamUpdateRequest $request, $id)
     {
+        $data = $request->all();
+
+        // dd($data);
+
         try {
+            $this->teamRepository->update($data, $id);
         } catch (ValidatorException $e) {
+            throw $e->getMessage();
         }
+
+        return redirect()->route('team.index');
     }
 
     public function destroy($id)

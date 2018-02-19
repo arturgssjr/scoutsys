@@ -5,7 +5,7 @@ var Modal = {
     initConfirmationModal: function () {
         $(document)
             .on('click', '.load-confirmation-modal', function (event) {
-                var name = $(this).attr('data-profile')
+                var nome = $(this).attr('data-name')
                 var tipo = $(this).attr('data-type')
                 $('#confirmation-modal')
                     .modal({
@@ -13,8 +13,8 @@ var Modal = {
                     })
                 $('#confirmation-modal h5.modal-title')
                     .html('Confirmar Exclusão - ' + tipo)
-                $('#confirmation-modal .modal-body p')
-                    .html('Deseja realmente excluir <strong>' + name + '</strong> ?')
+                $('#confirmation-modal div.modal-body p')
+                    .text('Deseja realmente excluir <strong>' + nome + '</strong> ?')
                 $('#confirmation-modal form')    
                     .attr('action', $(this).attr('data-url'))
                 event.preventDefault()

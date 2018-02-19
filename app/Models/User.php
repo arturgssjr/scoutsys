@@ -2,6 +2,11 @@
 
 namespace scoutsys\Models;
 
+use Carbon\Carbon;
+use scoutsys\Models\Coach;
+use scoutsys\Models\Status;
+use scoutsys\Models\Player;
+use scoutsys\Models\Details;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
@@ -32,7 +37,12 @@ class User extends Authenticatable implements Transformable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'birth',
+        'nickname',
+        'permission'
     ];
 
     /**
@@ -44,28 +54,28 @@ class User extends Authenticatable implements Transformable
         'password', 'remember_token',
     ];
 
-    public function setPasswordAttribute($value) {
+    public function setPasswordAttribute($value)
+    {
         $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($value) : $value;
     }
 
-    public function profiles() {
-        return $this->belongsToMany(Profile::class)->withTimestamps();
+    public function status()
+    {
+        return $this->morphMany(Status::class, 'status');
     }
 
-    public function admins() {
-        return $this->belongsToMany(Profile::class)->wherePivot('profile_id', 1);
+    public function details()
+    {
+        return $this->morphMany(Details::class, 'details');
     }
 
-    public function coachs() {
-        return $this->belongsToMany(Profile::class)->wherePivot('profile_id', 2);
+    public function coach()
+    {
+        return $this->hasOne(Coach::class);
     }
 
-    public function players() {
-        return $this->belongsToMany(Profile::class)->wherePivot('profile_id', 3);
+    public function player()
+    {
+        return $this->hasOne(Player::class);
     }
-
-    public function team() {
-        return $this->belongsTo(Team::class);
-    }
-
 }

@@ -24,8 +24,11 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(\scoutsys\Interfaces\UserRepository::class, \scoutsys\Repositories\UserRepositoryEloquent::class);
-        $this->app->bind(\scoutsys\Interfaces\ProfileRepository::class, \scoutsys\Repositories\ProfileRepositoryEloquent::class);
         $this->app->bind(\scoutsys\Interfaces\TeamRepository::class, \scoutsys\Repositories\TeamRepositoryEloquent::class);
+        $this->app->bind(\scoutsys\Interfaces\PlayerRepository::class, \scoutsys\Repositories\PlayerRepositoryEloquent::class);
+        $this->app->bind(\scoutsys\Interfaces\CoachRepository::class, \scoutsys\Repositories\CoachRepositoryEloquent::class);
+        $this->app->bind(\scoutsys\Interfaces\StatusRepository::class, \scoutsys\Repositories\StatusRepositoryEloquent::class);
+        $this->app->bind(\scoutsys\Interfaces\DetailsRepository::class, \scoutsys\Repositories\DetailsRepositoryEloquent::class);
         //:end-bindings:
     }
 }

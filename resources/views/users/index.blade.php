@@ -17,8 +17,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>
+                                <th>Data de Nascimento</th>
                                 <th>E-mail</th>
-                                <th>Perfil</th>
+                                <th>Permissão</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
@@ -27,12 +28,9 @@
                             <tr>
                                 <th scope="row">{{ $user->id }}</th>
                                 <td>{{ $user->name }}</td>
+                                <td>{{ date('d/m/Y', strtotime($user->birth)) }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>
-                                    @foreach($user->profiles as $profile)
-                                        <a href="{{ route('profile.show', $profile->id) }}">{{ $profile->name }}</a>
-                                    @endforeach
-                                </td>
+                                <td>{{ $user->permission }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-outline-info" role="button" href="{{ route('user.show', $user->id) }}">
                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -40,7 +38,7 @@
                                     <a class="btn btn-sm btn-outline-warning" role="button" href="{{ route('user.edit', $user->id) }}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </a>
-                                    <button class="btn btn-sm btn-outline-danger load-confirmation-modal" role="button" data-url="{{ route('user.destroy', $user->id) }}" data-type="Usuário" data-profile="{{ $user->name }}" data-target="#confirmation-modal" data-toggle="modal">
+                                    <button class="btn btn-sm btn-outline-danger load-confirmation-modal" role="button" data-url="{{ route('user.destroy', $user->id) }}" data-type="Usuário" data-name="{{ $user->name }}" data-target="#confirmation-modal" data-toggle="modal">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </td>

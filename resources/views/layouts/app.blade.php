@@ -12,8 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/select2.min.js') }}"></script>    
+    <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/jquery.js') }}"></script>    
+    <script src="{{ asset('js/select2.js') }}"></script>    
     @yield('before-script')
 </head>
 <body>
@@ -38,7 +39,6 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownCadastro">
                                 <a class="dropdown-item" href="{{ route('user.index') }}">Usuário</a>
-                                <a class="dropdown-item" href="{{ route('profile.index') }}">Perfil</a>
                                 <a class="dropdown-item" href="{{ route('team.index') }}">Equipe</a>
                             </div>
                         </li>

@@ -5,7 +5,6 @@ namespace scoutsys\Http\Controllers;
 use scoutsys\Services\UserService;
 use scoutsys\Validators\UserValidator;
 use scoutsys\Interfaces\UserRepository;
-use scoutsys\Interfaces\ProfileRepository;
 use scoutsys\Http\Requests\UserCreateRequest;
 use scoutsys\Http\Requests\UserUpdateRequest;
 use Prettus\Validator\Contracts\ValidatorInterface;
@@ -17,37 +16,35 @@ class UsersController extends Controller
 
     protected $validator;
 
-    private $profileRepository;
-
     protected $userService;
 
-    public function __construct(UserRepository $repository, UserValidator $validator, ProfileRepository $profileRepository, UserService $userService)
+    public function __construct(UserRepository $repository, UserValidator $validator, UserService $userService)
     {
         $this->middleware('auth');
         $this->repository = $repository;
         $this->validator  = $validator;
-        $this->profileRepository = $profileRepository;
         $this->userService = $userService;
     }
 
     public function index()
     {
         $users = $this->repository->all();
-        $profiles = $this->profileRepository->pluck('name', 'id');
 
-        return view('users.index', compact(['users', 'profiles']));
+        // dd($users);
+
+        return view('users.index', compact(['users']));
     }
 
     public function create()
     {
-        $profiles = $this->profileRepository->pluck('name', 'id');
-
-        return view('users.create', compact('profiles'));
+        return view('users.create');
     }
 
     public function store(UserCreateRequest $request)
     {
         $data = $request->all();
+
+        // dd($data);
 
         try {
             $this->userService->store($data);
@@ -68,14 +65,15 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = $this->repository->find($id);
-        $profiles = $this->profileRepository->pluck('name', 'id');
 
-        return view('users.edit', compact(['user', 'profiles']));
+        return view('users.edit', compact('user'));
     }
 
     public function update(UserUpdateRequest $request, $id)
     {
         $data = $request->all();
+
+        // dd($data);
 
         try {
             $this->userService->update($data, $id);
