@@ -12,11 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{--  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">   --}}
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>   
-    <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
+    {{--  <link href="{{ asset('css/select2.css') }}" rel="stylesheet">  --}}
     <script src="{{ asset('js/jquery.js') }}"></script>    
-    <script src="{{ asset('js/select2.js') }}"></script>    
+    {{--  <script src="{{ asset('js/select2.js') }}"></script>      --}}
     @yield('before-script')
 </head>
 <body>
