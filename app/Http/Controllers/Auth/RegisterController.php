@@ -67,7 +67,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = $this->userRepository->create($data);
-        $user->profiles()->attach(5);
         return $user;
     }
 }

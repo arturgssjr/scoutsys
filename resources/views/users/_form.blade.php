@@ -20,6 +20,13 @@
 </div>
 
 <div class="form-group row">
+    {!! Form::label('nickname', 'Apelido', ['class' => 'col-md-4 col-form-label']) !!}
+    <div class="col-md-8">
+        {!! Form::text('nickname', null, ['class' => 'form-control', 'required', 'autofocus']) !!}
+    </div>
+</div>
+
+<div class="form-group row">
     {!! Form::label('permission', 'Permissão', ['class' => 'col-md-4 col-form-label']) !!}
     <div class="col-md-8">
         {!! Form::select('permission', ['app.admin' => 'Administrador', 'app.coach' => 'Treinador', 'app.player' => 'Jogador'], null, ['class' => 'form-control', 'required', 'autofocus']) !!}

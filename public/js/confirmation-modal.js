@@ -14,7 +14,7 @@ var Modal = {
                 $('#confirmation-modal h5.modal-title')
                     .html('Confirmar Exclusão - ' + tipo)
                 $('#confirmation-modal div.modal-body p')
-                    .text('Deseja realmente excluir <strong>' + nome + '</strong> ?')
+                    .html('Deseja realmente excluir <strong>' + nome + '</strong> ?')
                 $('#confirmation-modal form')    
                     .attr('action', $(this).attr('data-url'))
                 event.preventDefault()

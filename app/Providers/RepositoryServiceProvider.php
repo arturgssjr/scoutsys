@@ -29,6 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\scoutsys\Interfaces\CoachRepository::class, \scoutsys\Repositories\CoachRepositoryEloquent::class);
         $this->app->bind(\scoutsys\Interfaces\StatusRepository::class, \scoutsys\Repositories\StatusRepositoryEloquent::class);
         $this->app->bind(\scoutsys\Interfaces\DetailsRepository::class, \scoutsys\Repositories\DetailsRepositoryEloquent::class);
+        $this->app->bind(\scoutsys\Interfaces\CategoryRepository::class, \scoutsys\Repositories\CategoryRepositoryEloquent::class);
         //:end-bindings:
     }
 }

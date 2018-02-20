@@ -4,6 +4,7 @@ namespace scoutsys\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use scoutsys\Models\Category;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -27,11 +28,17 @@ class Team extends Model implements Transformable
      */
     protected $fillable = [
         'name',
-        'foundation'
+        'foundation',
+        'category_id'
     ];
 
     public function users()
     {
         return $this->HasMany(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

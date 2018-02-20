@@ -4,9 +4,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateTeamsTable.
+ * Class CreateCategoriesTable.
  */
-class CreateTeamsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -15,12 +15,9 @@ class CreateTeamsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('teams', function(Blueprint $table) {
+		Schema::create('categories', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('name');
-			$table->unsignedInteger('category_id');
-			$table->foreign('category_id')->references('id')->on('categories');
-			$table->date('foundation');
+			$table->string('description');
 			$table->softDeletes();
             $table->timestamps();
 		});
@@ -33,6 +30,6 @@ class CreateTeamsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('teams');
+		Schema::drop('categories');
 	}
 }

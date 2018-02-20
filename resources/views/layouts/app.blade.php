@@ -40,6 +40,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownCadastro">
                                 <a class="dropdown-item" href="{{ route('user.index') }}">Usuário</a>
                                 <a class="dropdown-item" href="{{ route('team.index') }}">Equipe</a>
+                                <a class="dropdown-item" href="{{ route('category.index') }}">Categoria</a>
                             </div>
                         </li>
                     </ul>

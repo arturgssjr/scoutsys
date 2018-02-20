@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
                 <div class="card-header">Equipes 
-                    <a class="btn btn-sm btn-outline-success" role="button" href="{{ route('team.create') }}">
+                    <a class="btn btn-sm btn-outline-success" data-toggle="tooltip" data-placement="top" title="Cadastrar equipe" role="button" href="{{ route('team.create') }}">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                     </a></div>
 
@@ -17,6 +17,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>
+                                <th>Categoria</th>
                                 <th>Fundação</th>
                                 <th>Opções</th>
                             </tr>
@@ -26,15 +27,22 @@
                             <tr>
                                 <th scope="row">{{ $team->id }}</th>
                                 <td>{{ $team->name }}</td>
+                                <td>{{ $team->category->description }}</td>
                                 <td>{{ date('d/m/Y', strtotime($team->foundation)) }}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-outline-info" role="button" href="{{ route('team.show', $team->id) }}">
+                                    <a class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Atribuir treinador" role="button" href="#">
+                                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Atribuir jogadores" role="button" href="#">
+                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="top" title="Visualizar equipe" role="button" href="{{ route('team.show', $team->id) }}">
                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
                                     </a>
-                                    <a class="btn btn-sm btn-outline-warning" role="button" href="{{ route('team.edit', $team->id) }}">
+                                    <a class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Alterar equipe" role="button" href="{{ route('team.edit', $team->id) }}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </a>
-                                    <button class="btn btn-sm btn-outline-danger load-confirmation-modal" role="button" data-url="{{ route('team.destroy', $team->id) }}" data-type="Perfil" data-name="{{ $team->name }}" data-target="#confirmation-modal" data-toggle="modal">
+                                    <button class="btn btn-sm btn-outline-danger load-confirmation-modal" data-toggle="tooltip" data-placement="top" title="Excluir equipe" role="button" data-url="{{ route('team.destroy', $team->id) }}" data-type="Perfil" data-name="{{ $team->name }}" data-target="#confirmation-modal" data-toggle="modal">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </td>
@@ -50,4 +58,5 @@
 
 @section('after-script')
 <script src="{{ asset('js/confirmation-modal.js') }}"></script>
+<script src="{{ asset('js/tooltip.js') }}"></script>
 @endsection

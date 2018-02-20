@@ -42,7 +42,9 @@ class TeamsController extends Controller
 
     public function create()
     {
-        return view('teams.create');
+        $categories = \scoutsys\Models\Category::all()->pluck('description', 'id');
+        
+        return view('teams.create', compact('categories'));
     }
 
     public function show($id)

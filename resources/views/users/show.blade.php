@@ -21,7 +21,7 @@
                             <tr>
                                 <th>{{ $user->id }}</th>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->birth }}</td>
+                                <td>{{ date('d/m/Y', strtotime($user->birth)) }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->nickname }}</td>
                                 <td>{{ $user->permission }}</td>
