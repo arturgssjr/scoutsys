@@ -2,9 +2,9 @@
 
 namespace scoutsys\Models;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use scoutsys\Models\Category;
+use scoutsys\Models\Customer;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -40,5 +40,10 @@ class Team extends Model implements Transformable
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function customers()
+    {
+        return $this->hasMany(Customer::class);
     }
 }

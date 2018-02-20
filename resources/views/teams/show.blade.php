@@ -19,7 +19,11 @@
                             <tr>
                                 <th>{{ $team->id }}</th>
                                 <td>{{ $team->name }}</td>
-                                <td>{{ $team->category->description }}</td>
+                                <td>
+                                    <a href="{{ route('category.show', $team->category_id) }}">
+                                        {{ $team->category->description }}
+                                    </a>
+                                </td>
                                 <td>{{ date('d/m/Y', strtotime($team->foundation)) }}</td>
                             </tr>
                         </tbody>

@@ -21,7 +21,7 @@
                                 <td>{{ $category->description }}</td>
                                 <td>
                                     @foreach ($category->teams as $team) 
-                                        <a href="{{ route('team.show', $team->id) }}" class="badge badge-info">{{ $team->name }}</a>
+                                        <a href="{{ route('team.show', $team->id) }}">{{ $team->name }}</a>
                                     @endforeach
                                 </td>
                             </tr>

@@ -11,6 +11,6 @@ class TeamsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\scoutsys\Models\Team::class, 20)->create();
+        // factory(\scoutsys\Models\Team::class, 20)->create();
     }
 }

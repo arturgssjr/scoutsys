@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('nickname')->nullable();
             $table->string('permission')->default('app.player'); // app.player, app.admin, app.coach      
             $table->string('password')->nullable();
-            $table->rememberToken();
+			$table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
         });

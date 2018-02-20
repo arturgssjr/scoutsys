@@ -3,10 +3,9 @@
 namespace scoutsys\Models;
 
 use Carbon\Carbon;
-use scoutsys\Models\Coach;
 use scoutsys\Models\Status;
-use scoutsys\Models\Player;
 use scoutsys\Models\Details;
+use scoutsys\Models\Category;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
@@ -69,13 +68,13 @@ class User extends Authenticatable implements Transformable
         return $this->morphMany(Details::class, 'details');
     }
 
-    public function coach()
+    public function customers()
     {
-        return $this->hasOne(Coach::class);
+        return $this->hasMany(Customer::class);
     }
 
-    public function player()
+    public function category()
     {
-        return $this->hasOne(Player::class);
+        return $this->belongsTo(Category::class);
     }
 }

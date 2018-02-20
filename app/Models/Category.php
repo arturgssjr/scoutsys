@@ -2,8 +2,9 @@
 
 namespace scoutsys\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use scoutsys\Models\Team;
+use scoutsys\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
@@ -26,5 +27,10 @@ class Category extends Model implements Transformable
     public function teams()
     {
         return $this->hasMany(Team::class);
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
 }

@@ -26,20 +26,20 @@
                             <tr>
                                 <th scope="row">{{ $team->id }}</th>
                                 <td>{{ $team->name }}</td>
-                                <td>{{ $team->category->description }}</td>
+                                <td>
+                                    <a href="{{ route('category.show', $team->category_id) }}">
+                                        {{ $team->category->description }}
+                                    </a>
+                                </td>
                                 <td>{{ date('d/m/Y', strtotime($team->foundation)) }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Atribuir treinador" role="button"
                                         href="#">
-                                        <i class="fas fa-user-circle"></i>
+                                        <i class="fas fa-user"></i>
                                     </a>
                                     <a class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Atribuir jogadores" role="button"
                                         href="#">
-                                        @if($team->category->id === 1)
-                                            <i class="fas fa-basketball-ball"></i>
-                                        @elseif ($team->category->id === 2)
-                                            <i class="fas fa-futbol"></i>
-                                        @endif
+                                        <i class="fas fa-users"></i>
                                     </a>
                                     <a class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="top" title="Visualizar equipe" role="button"
                                         href="{{ route('team.show', $team->id) }}">

@@ -18,7 +18,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Descrição</th>
-                                <th>Quantidade de Equipes</th>
+                                <th># de Treinadores</th>
+                                <th># de Jogadores</th>
+                                <th># de Equipes</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
@@ -27,6 +29,8 @@
                             <tr>
                                 <th scope="row">{{ $category->id }}</th>
                                 <td>{{ $category->description }}</td>
+                                <td>{{ $category->users->count() }}</td>
+                                <td>{{ $category->users->count() }}</td>
                                 <td>{{ $category->teams->count() }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="top" title="Visualizar categoria" role="button" href="{{ route('category.show', $category->id) }}">
