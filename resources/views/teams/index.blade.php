@@ -7,11 +7,11 @@
                 <div class="card-header">Equipes
                     <a class="btn btn-sm btn-outline-success" data-toggle="tooltip" data-placement="top" title="Cadastrar equipe" role="button"
                         href="{{ route('team.create') }}">
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        <i class="fas fa-plus-circle"></i>
                     </a></div>
                 <div class="card-body">
     @include('layouts.forms.confirmation-modal')
-                    <table class="table">
+                    <table class="table table-sm">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
@@ -31,24 +31,28 @@
                                 <td>
                                     <a class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Atribuir treinador" role="button"
                                         href="#">
-                                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                        <i class="fas fa-user-circle"></i>
                                     </a>
                                     <a class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Atribuir jogadores" role="button"
                                         href="#">
-                                        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                        @if($team->category->id === 1)
+                                            <i class="fas fa-basketball-ball"></i>
+                                        @elseif ($team->category->id === 2)
+                                            <i class="fas fa-futbol"></i>
+                                        @endif
                                     </a>
                                     <a class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="top" title="Visualizar equipe" role="button"
                                         href="{{ route('team.show', $team->id) }}">
-                                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                        <i class="fas fa-info-circle"></i>
                                     </a>
                                     <a class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Alterar equipe" role="button"
                                         href="{{ route('team.edit', $team->id) }}">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <button class="btn btn-sm btn-outline-danger load-confirmation-modal" data-toggle="tooltip" data-placement="top" title="Excluir equipe"
                                         role="button" data-url="{{ route('team.destroy', $team->id) }}" data-type="Perfil" data-name="{{ $team->name }}"
                                         data-target="#confirmation-modal" data-toggle="modal">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>

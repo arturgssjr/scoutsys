@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Usuários 
                     <a class="btn btn-sm btn-outline-success" data-toggle="tooltip" data-placement="top" title="Cadastrar usuário" role="button" href="{{ route('user.create') }}">
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        <i class="fas fa-plus-circle"></i>
                     </a></div>
 
                 <div class="card-body">
@@ -36,10 +36,10 @@
                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
                                     </a>
                                     <a class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Alterar usuário" role="button" href="{{ route('user.edit', $user->id) }}">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <button class="btn btn-sm btn-outline-danger load-confirmation-modal" data-toggle="tooltip" data-placement="top" title="Excluir usuário" role="button" data-url="{{ route('user.destroy', $user->id) }}" data-type="Usuário" data-name="{{ $user->name }}" data-target="#confirmation-modal" data-toggle="modal">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>

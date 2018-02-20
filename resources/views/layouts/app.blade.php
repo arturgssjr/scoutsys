@@ -12,8 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{--  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">   --}}
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>   
     <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <script src="{{ asset('js/jquery.js') }}"></script>    
     <script src="{{ asset('js/select2.js') }}"></script>    
     @yield('before-script')
@@ -23,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <i class="fa fa-bar-chart" aria-hidden="true"></i> {{ config('app.name', 'Laravel') }}
+                    <i class="far fa-chart-bar"></i> {{ config('app.name', 'Laravel') }}
                 </a>
 
                 <!-- Collapsed Hamburger -->

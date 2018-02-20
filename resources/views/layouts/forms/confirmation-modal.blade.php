@@ -13,10 +13,10 @@
             <div class="modal-footer">
                     {!! Form::open(['url' => '', 'method' => 'DELETE']) !!}                
                     <button class="btn btn-sm btn-danger" type="submit">
-                        <i class="fa fa-trash" aria-hidden="true"></i> Confirmar
+                        <i class="fas fa-trash"></i> Confirmar
                     </button>
                     <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                        <i class="fa fa-times" aria-hidden="true"></i> Cancelar
+                        <i class="fas fa-times"></i> Cancelar
                     </button>
                     {!! Form::close() !!}
                 
