@@ -2,21 +2,23 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Categorias 
                     <a class="btn btn-sm btn-outline-success" data-toggle="tooltip" data-placement="top" title="Cadastrar categoria" role="button" href="{{ route('category.create') }}">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    </a></div>
+                    </a>
+                </div>
 
                 <div class="card-body">
                     @include('layouts.forms.confirmation-modal')
                     <table class="table">
-                        <thead>
+                        <thead class="thead-light">
                             <tr>
                                 <th>#</th>
                                 <th>Descrição</th>
+                                <th>Quantidade de Equipes</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
@@ -25,6 +27,7 @@
                             <tr>
                                 <th scope="row">{{ $category->id }}</th>
                                 <td>{{ $category->description }}</td>
+                                <td>{{ $category->teams->count() }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="top" title="Visualizar categoria" role="button" href="{{ route('category.show', $category->id) }}">
                                         <i class="fa fa-info-circle" aria-hidden="true"></i>

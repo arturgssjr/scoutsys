@@ -1,8 +1,8 @@
 @extends('layouts.app') 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Detalhes da Equipe: {{ $team->name }}</div>
                 <div class="card-body">
@@ -11,6 +11,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nome</th>
+                                <th>Categoria</th>
                                 <th>Fundação</th>
                             </tr>
                         </thead>
@@ -18,6 +19,7 @@
                             <tr>
                                 <th>{{ $team->id }}</th>
                                 <td>{{ $team->name }}</td>
+                                <td>{{ $team->category->description }}</td>
                                 <td>{{ date('d/m/Y', strtotime($team->foundation)) }}</td>
                             </tr>
                         </tbody>

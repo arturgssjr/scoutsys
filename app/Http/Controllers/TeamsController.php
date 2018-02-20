@@ -57,8 +57,9 @@ class TeamsController extends Controller
     public function edit($id)
     {
         $team = $this->teamRepository->find($id);
+        $categories = \scoutsys\Models\Category::all()->pluck('description', 'id');        
 
-        return view('teams.edit', compact('team'));
+        return view('teams.edit', compact('team', 'categories'));
     }
 
     public function update(TeamUpdateRequest $request, $id)
