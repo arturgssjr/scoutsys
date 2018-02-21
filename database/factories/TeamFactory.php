@@ -4,6 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(\scoutsys\Models\Team::class, function (Faker $faker) {
     return [
-        'name' => $faker->word
+        'name' => $faker->word,
+        'foundation' => $faker->date
     ];
 });

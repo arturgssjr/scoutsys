@@ -2,7 +2,7 @@
 
 namespace scoutsys\Models;
 
-use Carbon\Carbon;
+use scoutsys\Models\Team;
 use scoutsys\Models\Status;
 use scoutsys\Models\Details;
 use scoutsys\Models\Category;
@@ -12,29 +12,14 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-/**
- * Class User.
- *
- * @package namespace scoutsys\Models;
- */
 class User extends Authenticatable implements Transformable
 {
     use Notifiable;
     use SoftDeletes;
     use TransformableTrait;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $dates = ['deleted_at'];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'email',
@@ -44,11 +29,6 @@ class User extends Authenticatable implements Transformable
         'permission'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -58,23 +38,23 @@ class User extends Authenticatable implements Transformable
         $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($value) : $value;
     }
 
-    public function status()
+    public function statuses()
     {
-        return $this->morphMany(Status::class, 'status');
+        return $this->morphToMany(Status::class, 'statusable');
     }
 
     public function details()
     {
-        return $this->morphMany(Details::class, 'details');
+        return $this->morphToMany(Details::class, 'detailable');
     }
 
-    public function customers()
+    public function categories()
     {
-        return $this->hasMany(Customer::class);
+        return $this->morphToMany(Category::class, 'categoryable');
     }
 
-    public function category()
+    public function team()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Team::class);
     }
 }

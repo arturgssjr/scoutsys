@@ -5,6 +5,8 @@ namespace scoutsys\Http\Controllers;
 use scoutsys\Services\UserService;
 use scoutsys\Validators\UserValidator;
 use scoutsys\Interfaces\UserRepository;
+use scoutsys\Interfaces\StatusRepository;
+use scoutsys\Interfaces\CategoryRepository;
 use scoutsys\Http\Requests\UserCreateRequest;
 use scoutsys\Http\Requests\UserUpdateRequest;
 use Prettus\Validator\Contracts\ValidatorInterface;
@@ -13,15 +15,17 @@ use Prettus\Validator\Exceptions\ValidatorException;
 class UsersController extends Controller
 {
     protected $repository;
-
+    protected $categoryRepository;
+    protected $statusRepository;
     protected $validator;
-
     protected $userService;
 
-    public function __construct(UserRepository $repository, UserValidator $validator, UserService $userService)
+    public function __construct(UserRepository $repository, UserValidator $validator, UserService $userService, CategoryRepository $categoryRepository, StatusRepository $statusRepository)
     {
         $this->middleware('auth');
         $this->repository = $repository;
+        $this->categoryRepository = $categoryRepository;
+        $this->statusRepository = $statusRepository;
         $this->validator  = $validator;
         $this->userService = $userService;
     }
@@ -37,7 +41,10 @@ class UsersController extends Controller
 
     public function create()
     {
-        return view('users.create');
+        $categories = $this->categoryRepository->pluck('description', 'id');
+        $status = $this->statusRepository->pluck('description', 'id');
+        
+        return view('users.create', compact('categories', 'status'));
     }
 
     public function store(UserCreateRequest $request)
@@ -65,8 +72,10 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = $this->repository->find($id);
+        $categories = $this->categoryRepository->pluck('description', 'id');
+        $status = $this->statusRepository->pluck('description', 'id');                
 
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user', 'categories', 'status'));
     }
 
     public function update(UserUpdateRequest $request, $id)

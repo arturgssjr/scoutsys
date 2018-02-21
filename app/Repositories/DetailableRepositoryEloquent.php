@@ -4,16 +4,16 @@ namespace scoutsys\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use scoutsys\Interfaces\DetailsRepository;
-use scoutsys\Models\Details;
-use scoutsys\Validators\DetailsValidator;
+use scoutsys\Interfaces\DetailableRepository;
+use scoutsys\Models\Detailable;
+use scoutsys\Validators\DetailableValidator;
 
 /**
- * Class DetailsRepositoryEloquent.
+ * Class DetailableRepositoryEloquent.
  *
  * @package namespace scoutsys\Repositories;
  */
-class DetailsRepositoryEloquent extends BaseRepository implements DetailsRepository
+class DetailableRepositoryEloquent extends BaseRepository implements DetailableRepository
 {
     /**
      * Specify Model class name
@@ -22,7 +22,7 @@ class DetailsRepositoryEloquent extends BaseRepository implements DetailsReposit
      */
     public function model()
     {
-        return Details::class;
+        return Detailable::class;
     }
 
     /**
@@ -33,7 +33,7 @@ class DetailsRepositoryEloquent extends BaseRepository implements DetailsReposit
     public function validator()
     {
 
-        return DetailsValidator::class;
+        return DetailableValidator::class;
     }
 
 

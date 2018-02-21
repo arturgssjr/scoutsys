@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use scoutsys\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use scoutsys\Http\Requests\DetailsCreateRequest;
-use scoutsys\Http\Requests\DetailsUpdateRequest;
-use scoutsys\Interfaces\DetailsRepository;
-use scoutsys\Validators\DetailsValidator;
+use scoutsys\Http\Requests\DetailCreateRequest;
+use scoutsys\Http\Requests\DetailUpdateRequest;
+use scoutsys\Interfaces\DetailRepository;
+use scoutsys\Validators\DetailValidator;
 
 /**
  * Class DetailsController.
@@ -20,22 +20,22 @@ use scoutsys\Validators\DetailsValidator;
 class DetailsController extends Controller
 {
     /**
-     * @var DetailsRepository
+     * @var DetailRepository
      */
     protected $repository;
 
     /**
-     * @var DetailsValidator
+     * @var DetailValidator
      */
     protected $validator;
 
     /**
      * DetailsController constructor.
      *
-     * @param DetailsRepository $repository
-     * @param DetailsValidator $validator
+     * @param DetailRepository $repository
+     * @param DetailValidator $validator
      */
-    public function __construct(DetailsRepository $repository, DetailsValidator $validator)
+    public function __construct(DetailRepository $repository, DetailValidator $validator)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
@@ -51,6 +51,8 @@ class DetailsController extends Controller
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $details = $this->repository->all();
 
+        dd($details);
+
         if (request()->wantsJson()) {
 
             return response()->json([
@@ -64,13 +66,13 @@ class DetailsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  DetailsCreateRequest $request
+     * @param  DetailCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(DetailsCreateRequest $request)
+    public function store(DetailCreateRequest $request)
     {
         try {
 
@@ -79,7 +81,7 @@ class DetailsController extends Controller
             $detail = $this->repository->create($request->all());
 
             $response = [
-                'message' => 'Details created.',
+                'message' => 'Detail created.',
                 'data'    => $detail->toArray(),
             ];
 
@@ -139,14 +141,14 @@ class DetailsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  DetailsUpdateRequest $request
+     * @param  DetailUpdateRequest $request
      * @param  string            $id
      *
      * @return Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(DetailsUpdateRequest $request, $id)
+    public function update(DetailUpdateRequest $request, $id)
     {
         try {
 
@@ -155,7 +157,7 @@ class DetailsController extends Controller
             $detail = $this->repository->update($request->all(), $id);
 
             $response = [
-                'message' => 'Details updated.',
+                'message' => 'Detail updated.',
                 'data'    => $detail->toArray(),
             ];
 
@@ -194,11 +196,11 @@ class DetailsController extends Controller
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => 'Details deleted.',
+                'message' => 'Detail deleted.',
                 'deleted' => $deleted,
             ]);
         }
 
-        return redirect()->back()->with('message', 'Details deleted.');
+        return redirect()->back()->with('message', 'Detail deleted.');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace scoutsys\Models;
 
+use scoutsys\Models\Team;
+use scoutsys\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -22,8 +24,18 @@ class Status extends Model implements Transformable
      */
     protected $fillable = ['description'];
 
-    public function status(){
+    public function statusable()
+    {
         return $this->morphTo();
     }
 
+    public function users()
+    {
+        return $this->morphedByMany(User::class, 'statusable');
+    }
+
+    public function teams()
+    {
+        return $this->morphedByMany(Team::class, 'statusable');
+    }
 }

@@ -24,13 +24,28 @@ class Category extends Model implements Transformable
      */
     protected $fillable = ['description'];
 
-    public function teams()
+    // public function teams()
+    // {
+    //     return $this->hasMany(Team::class);
+    // }
+
+    // public function users()
+    // {
+    //     return $this->hasMany(User::class);
+    // }
+
+    public function categoryable()
     {
-        return $this->hasMany(Team::class);
+        return $this->morphTo();
     }
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->morphedByMany(User::class, 'categoryable');
+    }
+
+    public function teams()
+    {
+        return $this->morphedByMany(Team::class, 'categoryable');
     }
 }

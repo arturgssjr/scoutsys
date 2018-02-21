@@ -4,7 +4,7 @@ namespace scoutsys\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DetailsCreateRequest extends FormRequest
+class DetailUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

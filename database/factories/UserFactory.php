@@ -17,6 +17,9 @@ $factory->define(scoutsys\Models\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'birth' => $faker->dateTime,
+        'nickname' => $faker->name,
+        'permission' => $faker->word,
         'password' => env('PASSWORD_HASH') ? bcrypt('123456') : '123456',
         'remember_token' => str_random(10),
     ];

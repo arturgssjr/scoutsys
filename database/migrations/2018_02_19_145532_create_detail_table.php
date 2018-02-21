@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 /**
  * Class CreateDetailsTable.
  */
-class CreateDetailsTable extends Migration
+class CreateDetailTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -23,7 +23,7 @@ class CreateDetailsTable extends Migration
 			$table->string('state');
             $table->string('zipcode');
             $table->string('photo');
-            $table->nullableMorphs('details');
+            $table->nullableMorphs('detailsable');
             $table->timestamps();
 		});
 	}

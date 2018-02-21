@@ -5,11 +5,11 @@ namespace scoutsys\Interfaces;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface DetailsRepository.
+ * Interface DetailableRepository.
  *
  * @package namespace scoutsys\Interfaces;
  */
-interface DetailsRepository extends RepositoryInterface
+interface DetailableRepository extends RepositoryInterface
 {
     //
 }

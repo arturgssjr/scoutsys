@@ -3,23 +3,23 @@
 namespace scoutsys\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use scoutsys\Models\Details;
+use scoutsys\Models\Detail;
 
 /**
- * Class DetailsTransformer.
+ * Class DetailTransformer.
  *
  * @package namespace scoutsys\Transformers;
  */
-class DetailsTransformer extends TransformerAbstract
+class DetailTransformer extends TransformerAbstract
 {
     /**
-     * Transform the Details entity.
+     * Transform the Detail entity.
      *
-     * @param \scoutsys\Models\Details $model
+     * @param \scoutsys\Models\Detail $model
      *
      * @return array
      */
-    public function transform(Details $model)
+    public function transform(Detail $model)
     {
         return [
             'id'         => (int) $model->id,

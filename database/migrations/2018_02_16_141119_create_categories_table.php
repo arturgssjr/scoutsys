@@ -17,15 +17,15 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
+            $table->string('description');            
             $table->softDeletes();
             $table->timestamps();
         });
 
-        Schema::table('users', function (Blueprint $table) {
-			$table->unsignedInteger('category_id')->nullable();
-			$table->foreign('category_id')->references('id')->on('categories');
-        });
+        // Schema::table('users', function (Blueprint $table) {
+		// 	$table->unsignedInteger('category_id')->nullable();
+		// 	$table->foreign('category_id')->references('id')->on('categories');
+        // });
     }
 
     /**
@@ -35,10 +35,10 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-		Schema::table('users', function (Blueprint $table) {
-			$table->dropForeign('users_category_id_foreign');
-			$table->dropColumn('category_id');
-        });
+		// Schema::table('users', function (Blueprint $table) {
+		// 	$table->dropForeign('users_category_id_foreign');
+		// 	$table->dropColumn('category_id');
+        // });
         Schema::drop('categories');
     }
 }

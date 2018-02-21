@@ -12,6 +12,9 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         factory(\scoutsys\Models\Category::class)->create([
+            'description' => 'Administrador'
+        ]);
+        factory(\scoutsys\Models\Category::class)->create([
             'description' => 'Basquete'
         ]);
         factory(\scoutsys\Models\Category::class)->create([

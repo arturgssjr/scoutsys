@@ -27,6 +27,13 @@
 </div>
 
 <div class="form-group row">
+    {!! Form::label('category_id', 'Categoria', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+    <div class="col-md-6">
+        {!! Form::select('category_id', $categories, null, ['class' => 'form-control', 'required', 'autofocus']) !!}
+    </div>
+</div>
+
+<div class="form-group row">
     {!! Form::label('permission', 'Permissão', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
     <div class="col-md-6">
         {!! Form::select('permission', ['app.admin' => 'Administrador', 'app.coach' => 'Treinador', 'app.player' => 'Jogador'], null, ['class' => 'form-control', 'required', 'autofocus']) !!}
@@ -34,8 +41,8 @@
 </div>
 
 <div class="form-group row">
-    {!! Form::label('status', 'Status', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+    {!! Form::label('status_id', 'Status', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
     <div class="col-md-6">
-        {!! Form::select('status', [1 => 'Ativo', 2 => 'Inativo', 3 => 'Bloqueado'], null, ['class' => 'form-control']) !!}
+        {!! Form::select('status_id', $status, null, ['class' => 'form-control']) !!}
     </div>
 </div>

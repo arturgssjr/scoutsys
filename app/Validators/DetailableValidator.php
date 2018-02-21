@@ -6,11 +6,11 @@ use \Prettus\Validator\Contracts\ValidatorInterface;
 use \Prettus\Validator\LaravelValidator;
 
 /**
- * Class DetailsValidator.
+ * Class DetailableValidator.
  *
  * @package namespace scoutsys\Validators;
  */
-class DetailsValidator extends LaravelValidator
+class DetailableValidator extends LaravelValidator
 {
     /**
      * Validation Rules

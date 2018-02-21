@@ -2,15 +2,15 @@
 
 namespace scoutsys\Presenters;
 
-use scoutsys\Transformers\DetailsTransformer;
+use scoutsys\Transformers\CategoryableTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
- * Class DetailsPresenter.
+ * Class CategoryablePresenter.
  *
  * @package namespace scoutsys\Presenters;
  */
-class DetailsPresenter extends FractalPresenter
+class CategoryablePresenter extends FractalPresenter
 {
     /**
      * Transformer
@@ -19,6 +19,6 @@ class DetailsPresenter extends FractalPresenter
      */
     public function getTransformer()
     {
-        return new DetailsTransformer();
+        return new CategoryableTransformer();
     }
 }

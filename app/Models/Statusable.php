@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Details.
+ * Class Statusable.
  *
  * @package namespace scoutsys\Models;
  */
-class Details extends Model implements Transformable
+class Statusable extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -20,17 +20,6 @@ class Details extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [
-        'address',
-        'phone',
-        'zipcode',
-        'photo',
-        'city',
-        'state'
-    ];
-
-    public function details(){
-        return $this->morphTo();
-    }
+    protected $fillable = [];
 
 }

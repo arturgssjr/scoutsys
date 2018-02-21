@@ -18,17 +18,17 @@ class CreateTeamsTable extends Migration
 		Schema::create('teams', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
-			$table->unsignedInteger('category_id');
-			$table->foreign('category_id')->references('id')->on('categories');
-			$table->date('foundation');
+			// $table->unsignedInteger('category_id');
+			// $table->foreign('category_id')->references('id')->on('categories');
+			$table->date('foundation');			
 			$table->softDeletes();
             $table->timestamps();
 		});
 
-		Schema::table('users', function (Blueprint $table) {
-			$table->unsignedInteger('team_id')->nullable();	
-			$table->foreign('team_id')->references('id')->on('teams');
-		});
+		// Schema::table('users', function (Blueprint $table) {
+		// 	$table->unsignedInteger('team_id')->nullable();	
+		// 	$table->foreign('team_id')->references('id')->on('teams');
+		// });
 	}
 
 	/**
@@ -38,10 +38,10 @@ class CreateTeamsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::table('users', function (Blueprint $table) {
-			$table->dropForeign('users_team_id_foreign');
-			$table->dropColumn('team_id');
-        });
+		// Schema::table('users', function (Blueprint $table) {
+		// 	$table->dropForeign('users_team_id_foreign');
+		// 	$table->dropColumn('team_id');
+        // });
 		Schema::drop('teams');
 	}
 }

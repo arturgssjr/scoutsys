@@ -43,6 +43,7 @@
                                 <a class="dropdown-item" href="{{ route('user.index') }}">Usuário</a>
                                 <a class="dropdown-item" href="{{ route('team.index') }}">Equipe</a>
                                 <a class="dropdown-item" href="{{ route('category.index') }}">Categoria</a>
+                                <a class="dropdown-item" href="{{ route('status.index') }}">Status</a>
                             </div>
                         </li>
                     </ul>

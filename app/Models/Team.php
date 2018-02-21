@@ -2,6 +2,8 @@
 
 namespace scoutsys\Models;
 
+use scoutsys\Models\Status;
+use scoutsys\Models\Details;
 use scoutsys\Models\Category;
 use scoutsys\Models\Customer;
 use Illuminate\Database\Eloquent\Model;
@@ -28,8 +30,7 @@ class Team extends Model implements Transformable
      */
     protected $fillable = [
         'name',
-        'foundation',
-        'category_id'
+        'foundation'
     ];
 
     public function users()
@@ -37,13 +38,18 @@ class Team extends Model implements Transformable
         return $this->HasMany(User::class);
     }
 
-    public function category()
+    public function statuses()
     {
-        return $this->belongsTo(Category::class);
+        return $this->morphToMany(Status::class, 'statusable');
     }
 
-    public function customers()
+    public function details()
     {
-        return $this->hasMany(Customer::class);
+        return $this->morphToMany(Details::class, 'detailable');
+    }
+
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'categoryable');
     }
 }
