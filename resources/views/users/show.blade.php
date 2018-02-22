@@ -14,6 +14,7 @@
                             <th>E-mail</th>
                             <th>Apelido</th>
                             <th>Permissão</th>
+                            <th>Opções</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,6 +25,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->nickname }}</td>
                             <td>{{ $user->permission }}</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>

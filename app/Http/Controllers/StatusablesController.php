@@ -37,6 +37,7 @@ class StatusablesController extends Controller
      */
     public function __construct(StatusableRepository $repository, StatusableValidator $validator)
     {
+        $this->middleware('auth');
         $this->repository = $repository;
         $this->validator  = $validator;
     }

@@ -25,6 +25,7 @@ class StatusesController extends Controller
 
     public function __construct(StatusRepository $repository, StatusValidator $validator)
     {
+        $this->middleware('auth');
         $this->repository = $repository;
         $this->validator  = $validator;
     }

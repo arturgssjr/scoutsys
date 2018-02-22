@@ -37,6 +37,7 @@ class CategoriesController extends Controller
      */
     public function __construct(CategoryRepository $repository, CategoryValidator $validator)
     {
+        $this->middleware('auth');
         $this->repository = $repository;
         $this->validator  = $validator;
     }

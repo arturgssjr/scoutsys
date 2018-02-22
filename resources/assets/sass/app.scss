@@ -8,12 +8,11 @@
 // Bootstrap
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
-// Font-Awesome
-// @import "../../../node_modules/font-awesome/scss/font-awesome";
-@import "../web-fonts-with-css/scss/fontawesome";
-@import "../web-fonts-with-css/scss/fa-brands";
-@import "../web-fonts-with-css/scss/fa-regular";
-@import "../web-fonts-with-css/scss/fa-solid";
+// Font Awesome
+@import "../font-awesome/scss/fontawesome";
+@import "../font-awesome/scss/fa-brands";
+@import "../font-awesome/scss/fa-regular";
+@import "../font-awesome/scss/fa-solid";
 
 .navbar-laravel {
   background-color: #fff;

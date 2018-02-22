@@ -37,6 +37,7 @@ class DetailablesController extends Controller
      */
     public function __construct(DetailableRepository $repository, DetailableValidator $validator)
     {
+        $this->middleware('auth');
         $this->repository = $repository;
         $this->validator  = $validator;
     }

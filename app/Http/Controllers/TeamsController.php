@@ -22,6 +22,7 @@ class TeamsController extends Controller
 
     public function __construct(TeamRepository $teamRepository, TeamValidator $teamValidator, TeamService $teamService, CategoryRepository $categoryRepository, StatusRepository $statusRepository)
     {
+        $this->middleware('auth');
         $this->teamRepository = $teamRepository;
         $this->categoryRepository = $categoryRepository;
         $this->statusRepository = $statusRepository;

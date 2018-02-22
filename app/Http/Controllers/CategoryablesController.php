@@ -37,6 +37,7 @@ class CategoryablesController extends Controller
      */
     public function __construct(CategoryableRepository $repository, CategoryableValidator $validator)
     {
+        $this->middleware('auth');
         $this->repository = $repository;
         $this->validator  = $validator;
     }

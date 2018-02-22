@@ -37,6 +37,7 @@ class DetailsController extends Controller
      */
     public function __construct(DetailRepository $repository, DetailValidator $validator)
     {
+        $this->middleware('auth');
         $this->repository = $repository;
         $this->validator  = $validator;
     }
