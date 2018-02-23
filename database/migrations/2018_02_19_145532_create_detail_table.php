@@ -17,12 +17,13 @@ class CreateDetailTable extends Migration
 	{
 		Schema::create('details', function(Blueprint $table) {
             $table->increments('id');
-            $table->text('address');
-			$table->string('phone');
-			$table->string('city');
-			$table->string('state');
-            $table->string('zipcode');
-            $table->string('photo');
+            $table->text('address')->nullable();
+            $table->text('complement')->nullable();
+			$table->string('phone')->nullable();
+			$table->string('city')->nullable();
+			$table->string('state')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('photo')->nullable();
             $table->nullableMorphs('detailsable');
             $table->timestamps();
 		});

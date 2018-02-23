@@ -33,7 +33,7 @@
                             <td class="text-center">{{ $category->teams->count() }}</td>
                             <td class="text-center">
                                 <a class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="top" title="Visualizar categoria" role="button" href="{{ route('category.show', $category->id) }}">
-                                    <i class="fas fa-user-circle"></i>
+                                    <i class="fas fa-info-circle"></i>
                                 </a>
                                 <a class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Alterar categoria" role="button" href="{{ route('category.edit', $category->id) }}">
                                     <i class="fas fa-pencil-alt"></i>

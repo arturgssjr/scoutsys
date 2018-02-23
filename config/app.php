@@ -163,7 +163,7 @@ return [
         /*
          * Custom Service Providers...
          */
-        Collective\Html\HtmlServiceProvider::class,
+        // Collective\Html\HtmlServiceProvider::class,
 
     ],
 
