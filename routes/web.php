@@ -11,6 +11,3 @@ Route::resource('team', 'TeamsController');
 Route::resource('status', 'StatusesController');
 Route::resource('detail', 'DetailsController');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

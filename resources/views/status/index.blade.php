@@ -27,7 +27,7 @@
                             <td>{{ $status->description }}</td>
                             <td class="text-center">
                                 <a class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="top" title="Visualizar status" role="button" href="{{ route('status.show', $status->id) }}">
-                                    <i class="fas fa-user-circle"></i>
+                                    <i class="fas fa-info-circle"></i>
                                 </a>
                                 <a class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Alterar status" role="button" href="{{ route('status.edit', $status->id) }}">
                                     <i class="fas fa-pencil-alt"></i>

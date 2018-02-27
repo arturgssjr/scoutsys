@@ -13,13 +13,14 @@ let mix = require('laravel-mix');
 
 mix.js([
         'resources/assets/js/app.js',
-        // 'resources/assets/js/select2.js',
+        'resources/assets/js/select2.js',
         'resources/assets/js/tooltip.js',
         'resources/assets/js/confirmation-modal.js'
     ], 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
 
-/* mix.styles([
+mix.styles([
         'public/css/app.css',
-        'resources/assets/css/select2.css'
-    ], 'public/css/app.css'); */
+        'resources/assets/css/select2.css',
+        'resources/assets/css/dashboard.css'
+    ], 'public/css/app.css');
