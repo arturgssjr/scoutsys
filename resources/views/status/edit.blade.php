@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.layout')
+
+@section('breadcrumbs', Breadcrumbs::render('status.edit', $status))
 
 @section('content')
 <div class="container">

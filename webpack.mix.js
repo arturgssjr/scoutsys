@@ -22,5 +22,6 @@ mix.js([
 mix.styles([
         'public/css/app.css',
         'resources/assets/css/select2.css',
+        'resources/assets/css/footer.css',
         'resources/assets/css/dashboard.css'
     ], 'public/css/app.css');

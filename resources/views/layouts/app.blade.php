@@ -15,12 +15,11 @@
     @yield('before-script')
 </head>
 <body>
-    <div id="app">
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
             <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ route('home') }}">
                 <i class="far fa-chart-bar"></i> {{ config('app.name', 'Laravel') }}
             </a>
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+            {{--  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">  --}}
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav px-3">
                 <!-- Authentication Links -->
@@ -34,8 +33,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Sair
                             </a>
 
@@ -48,8 +46,34 @@
             </ul>
         </nav>  
 
+        <div class="container-fluid">
+            <di class="row">
+                <nav class="col-md-2 d-none d-md-block bd-light sidebar">
+                    <div class="sidebar-sticky">
+                        @auth
+                        <!-- Left Side Of Navbar -->
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.index') }}">Usuários</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('team.index') }}">Equipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('category.index') }}">Categorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('status.index') }}">Status</a>
+                            </li>
+                        </ul>
+                        @endauth
+                    </div>
+                </nav>
+            </di>
+        </div>
 
-        <nav class="navbar navbar-dark navbar-expand-md bg-dark navbar-laravel">
+
+        {{--  <nav class="navbar navbar-dark navbar-expand-md bg-dark navbar-laravel">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <i class="far fa-chart-bar"></i> {{ config('app.name', 'Laravel') }}
@@ -106,12 +130,18 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>  --}}
 
-        <main class="py-4"> 
-            @yield('content')
-        </main>
-    </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+    </nav> 
+
+    <main class="py-4"> 
+        @yield('content')
+    </main>
+    
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

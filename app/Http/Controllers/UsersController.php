@@ -33,10 +33,12 @@ class UsersController extends Controller
     public function index()
     {
         $users = $this->repository->all();
+        $categories = $this->categoryRepository->pluck('description', 'id');
+        $status = $this->statusRepository->pluck('description', 'id');
 
         // dd($users);
 
-        return view('users.index', compact(['users']));
+        return view('users.index', compact('users', 'categories', 'status'));
     }
 
     public function create()
