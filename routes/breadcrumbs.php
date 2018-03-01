@@ -41,7 +41,7 @@ Breadcrumbs::register('team.show', function ($breadcrumbs, $team) {
     $breadcrumbs->push($team->name, route('team.show', $team->id));
 });
 
-// Equipes / Alterar
+// Equipes / Cadastrar
 Breadcrumbs::register('team.create', function ($breadcrumbs) {
     $breadcrumbs->parent('team.index');
     $breadcrumbs->push('Cadastrar', route('team.create'));
@@ -62,10 +62,10 @@ Breadcrumbs::register('status.index', function ($breadcrumbs) {
 // Status / Visualizar
 Breadcrumbs::register('status.show', function ($breadcrumbs, $status) {
     $breadcrumbs->parent('status.index');
-    $breadcrumbs->push($status->name, route('status.show', $status->id));
+    $breadcrumbs->push($status->description, route('status.show', $status->id));
 });
 
-// Status / Alterar
+// Status / Cadastrar
 Breadcrumbs::register('status.create', function ($breadcrumbs) {
     $breadcrumbs->parent('status.index');
     $breadcrumbs->push('Cadastrar', route('status.create'));
@@ -75,4 +75,28 @@ Breadcrumbs::register('status.create', function ($breadcrumbs) {
 Breadcrumbs::register('status.edit', function ($breadcrumbs, $status) {
     $breadcrumbs->parent('status.index');
     $breadcrumbs->push('Alterar', route('status.edit', $status->id));
+});
+
+// Categorias
+Breadcrumbs::register('category.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Categoria', route('category.index'));
+});
+
+// Categorias / Visualizar
+Breadcrumbs::register('category.show', function ($breadcrumbs, $category) {
+    $breadcrumbs->parent('category.index');
+    $breadcrumbs->push($category->description, route('category.show', $category->id));
+});
+
+// Categorias / Cadastrar
+Breadcrumbs::register('category.create', function ($breadcrumbs) {
+    $breadcrumbs->parent('category.index');
+    $breadcrumbs->push('Cadastrar', route('category.create'));
+});
+
+// Categorias / Alterar
+Breadcrumbs::register('category.edit', function ($breadcrumbs, $category) {
+    $breadcrumbs->parent('category.index');
+    $breadcrumbs->push('Alterar', route('category.edit', $category->id));
 });

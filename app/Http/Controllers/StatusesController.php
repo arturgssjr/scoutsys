@@ -73,12 +73,6 @@ class StatusesController extends Controller
     {
         $status = $this->repository->find($id);
 
-        if (request()->wantsJson()) {
-            return response()->json([
-                'data' => $status,
-            ]);
-        }
-
         return view('status.show', compact('status'));
     }
 
