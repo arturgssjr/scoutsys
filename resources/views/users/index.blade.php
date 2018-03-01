@@ -30,7 +30,7 @@
                     <td>{{ $user->name }}</td>
                     <td class="text-center">{{ date('d/m/Y', strtotime($user->birth)) }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>
+                    <td class="text-center">
                         @foreach ($user->categories as $category)
                         <a href="{{ route('category.show', $category->id) }}">
                             {{ $category->description }}

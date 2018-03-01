@@ -25,3 +25,7 @@ mix.styles([
         'resources/assets/css/footer.css',
         'resources/assets/css/dashboard.css'
     ], 'public/css/app.css');
+
+mix.styles([
+        'resources/assets/css/login.css'
+    ], 'public/css/login.css');

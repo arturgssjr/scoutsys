@@ -51,7 +51,7 @@
                             <i class="fas fa-pencil-alt"></i>
                         </a>
                         <button class="btn btn-sm btn-outline-danger load-confirmation-modal" data-toggle="tooltip" data-placement="top" title="Excluir equipe"
-                            role="button" data-url="{{ route('team.destroy', $team->id) }}" data-type="Perfil" data-name="{{ $team->name }}"
+                            role="button" data-url="{{ route('team.destroy', $team->id) }}" data-type="Equipes" data-name="{{ $team->name }}"
                             data-target="#confirmation-modal" data-toggle="modal">
                             <i class="fas fa-trash"></i>
                         </button>

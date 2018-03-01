@@ -21,7 +21,7 @@
                 @foreach($status as $status)
                 <tr>
                     <th scope="row" class="text-center">{{ $status->id }}</th>
-                    <td>{{ $status->description }}</td>
+                    <td class="text-center">{{ $status->description }}</td>
                     <td class="text-center">
                         <a class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="top" title="Visualizar status" role="button" href="{{ route('status.show', $status->id) }}">
                             <i class="fas fa-info-circle"></i>
