@@ -4,7 +4,7 @@ namespace scoutsys\Models;
 
 use scoutsys\Models\Team;
 use scoutsys\Models\Status;
-use scoutsys\Models\Details;
+use scoutsys\Models\Detail;
 use scoutsys\Models\Category;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -45,7 +45,7 @@ class User extends Authenticatable implements Transformable
 
     public function details()
     {
-        return $this->morphToMany(Details::class, 'detailable');
+        return $this->morphToMany(Detail::class, 'detailable');
     }
 
     public function categories()

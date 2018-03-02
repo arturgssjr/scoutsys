@@ -22,7 +22,7 @@
                     <th class="text-center">{{ $user->id }}</th>
                     <td>{{ $user->name }}</td>
                     <td class="text-center">{{ date('d/m/Y', strtotime($user->birth)) }}</td>
-                    <td>{{ $user->email }}</td>
+                    <td class="text-center">{{ $user->email }}</td>
                     <td class="text-center">{{ $user->nickname }}</td>
                     <td class="text-center">{{ $user->permission }}</td>
                     <td class="text-center">
@@ -35,4 +35,11 @@
         </table>
     </div>
 </div>
+
+@if (!empty($user->details->toArray()))
+
+@yield('details-content')
+
+@endif
+
 @endsection
