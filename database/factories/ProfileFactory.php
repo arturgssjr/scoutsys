@@ -18,7 +18,9 @@ class ProfileFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nickname' => $this->faker->name(),
+            'shirt_number' => $this->faker->numberBetween(1, 99),
+            'phone' => $this->faker->phoneNumber(),
         ];
     }
 }

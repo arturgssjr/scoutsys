@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AddressFactory extends Factory
 {
+    protected static ?string $country = 'Brasil';
+
     /**
      * Define the model's default state.
      *
@@ -18,7 +20,13 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'street' => $this->faker->streetName(),
+            'neighborhood' => $this->faker->words(random_int(1, 3), true),
+            'number' => $this->faker->buildingNumber(),
+            'city' => $this->faker->city(),
+            'state' => $this->faker->stateAbbr(),
+            'country' => static::$country ??= $this->faker->country(),
+            'zipcode' => $this->faker->postcode(),
         ];
     }
 }

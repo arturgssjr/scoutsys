@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Team;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Team>
+ * @extends Factory<Category>
  */
-class TeamFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,7 @@ class TeamFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->company(),
-            'foundation_date' => $this->faker->date(),
+            //
         ];
     }
 }

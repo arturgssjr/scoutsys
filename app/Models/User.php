@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -31,6 +32,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
 
     protected $with = [
         'profile',
+        'address',
     ];
 
     /**
@@ -54,6 +56,11 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
     public function address(): MorphOne
     {
         return $this->morphOne(Address::class, 'addressable');
+    }
+
+    public function categories(): MorphToMany
+    {
+        return $this->morphToMany(Category::class, 'categoryable');
     }
 
     /**

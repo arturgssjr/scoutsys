@@ -2,16 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\Team;
 use Illuminate\Database\Seeder;
 
-class TeamSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Team::factory(10)->create();
+        //
     }
 }
