@@ -14,6 +14,11 @@ class TeamsRelationManager extends RelationManager
 
     protected static ?string $relatedResource = TeamResource::class;
 
+    public function isReadOnly(): bool
+    {
+        return false;
+    }
+
     public function table(Table $table): Table
     {
         return $table

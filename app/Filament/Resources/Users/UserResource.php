@@ -45,7 +45,7 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            TeamsRelationManager::class,
+            'teams' => TeamsRelationManager::class,
         ];
     }
 
