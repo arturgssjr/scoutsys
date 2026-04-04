@@ -50,14 +50,14 @@ test('user can delete their account', function () {
     $this->actingAs($user);
 
     $response = Livewire::test('settings.delete-user-form')
-        ->set('password', 'password')
+        ->set('password', '123456789')
         ->call('deleteUser');
 
     $response
         ->assertHasNoErrors()
         ->assertRedirect('/');
 
-    expect($user->fresh())->toBeNull();
+    expect(User::find($user->id))->toBeNull();
     expect(auth()->check())->toBeFalse();
 });
 
