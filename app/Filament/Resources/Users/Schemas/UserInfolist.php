@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Users\Schemas;
 use App\Models\User;
 use Filament\Infolists\Components\SpatieMediaLibraryImageEntry;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 
@@ -33,22 +34,24 @@ class UserInfolist
                                     ->date(format: 'd/m/Y'),
                             ]),
                         Tabs\Tab::make('Profile')
-                            ->columns(3)
+                            ->columns()
                             ->schema([
-                                TextEntry::make('profile.nickname')
-                                    ->label('Apelido')
-                                    ->placeholder('Não informado'),
-                                TextEntry::make('profile.shirt_number')
-                                    ->label('Nº da camisa')
-                                    ->placeholder('Não informado'),
-                                TextEntry::make('profile.phone')
-                                    ->label('Telefone/Celular')
-                                    ->placeholder('Não informado'),
+                                Grid::make(1)
+                                    ->schema([
+                                        TextEntry::make('profile.nickname')
+                                            ->label('Nome da camisa')
+                                            ->placeholder('Não informado'),
+                                        TextEntry::make('profile.shirt_number')
+                                            ->label('Número da camisa')
+                                            ->placeholder('Não informado'),
+                                        TextEntry::make('profile.phone')
+                                            ->label('Contato')
+                                            ->placeholder('Não informado'),
+                                    ]),
                                 SpatieMediaLibraryImageEntry::make('profile.photo')
                                     ->label('Foto')
                                     ->placeholder('Não informado')
-                                    ->collection('profile-images')
-                                    ->columnSpanFull(),
+                                    ->collection('profile-images'),
                             ]),
                         Tabs\Tab::make('Address')
                             ->columns(4)
@@ -73,9 +76,6 @@ class UserInfolist
                                     ->placeholder('Não informado'),
                                 TextEntry::make('address.state')
                                     ->label('Estado')
-                                    ->placeholder('Não informado'),
-                                TextEntry::make('address.country')
-                                    ->label('País')
                                     ->placeholder('Não informado'),
                             ]),
                         Tabs\Tab::make('Audit')

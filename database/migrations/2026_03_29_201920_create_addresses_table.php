@@ -19,7 +19,6 @@ return new class extends Migration
             $table->text('complement')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
-            $table->string('country')->nullable();
             $table->string('zipcode')->nullable();
             $table->nullableUuidMorphs('addressable');
             $table->timestamps();
