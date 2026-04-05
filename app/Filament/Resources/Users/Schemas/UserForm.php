@@ -181,18 +181,18 @@ class UserForm
                 ->description('Dados gerais')
                 ->columns()
                 ->icon(Heroicon::User)
-                ->schema(UserForm::getUserFormFields()),
+                ->schema(static::getUserFormFields()),
             Wizard\Step::make('Profile')
                 ->label('Perfil')
                 ->description('Dados do atleta')
                 ->columns(1)
                 ->icon(Heroicon::Identification)
-                ->schema(UserForm::getProfileFormFields()),
+                ->schema(static::getProfileFormFields()),
             Wizard\Step::make('Address')
                 ->label('Endereço')
                 ->description('Dados de endereço')
                 ->icon(Heroicon::Map)
-                ->schema(UserForm::getAddressFormFields()),
+                ->schema(static::getAddressFormFields()),
         ];
     }
 }

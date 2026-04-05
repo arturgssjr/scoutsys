@@ -18,6 +18,18 @@ class Team extends Model implements HasAvatar
     /** @use HasFactory<TeamFactory> */
     use HasFactory, HasUlids, SoftDeletes;
 
+    protected $with = [
+        'profile',
+        'address',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'foundation_date' => 'date',
+        ];
+    }
+
     public function profile(): MorphOne
     {
         return $this->morphOne(Profile::class, 'profileable');

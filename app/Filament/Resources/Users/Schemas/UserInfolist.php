@@ -83,7 +83,7 @@ class UserInfolist
                             ]),
                         Tabs\Tab::make('Audit')
                             ->label('Complemento')
-                            ->columns(3)
+                            ->columns(4)
                             ->schema([
                                 TextEntry::make('email_verified_at')
                                     ->label('Verificado em')

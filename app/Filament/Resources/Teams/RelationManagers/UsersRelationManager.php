@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Filament\Resources\Users\RelationManagers;
+namespace App\Filament\Resources\Teams\RelationManagers;
 
 use App\Enums\TeamUserRole;
-use App\Filament\Resources\Teams\TeamResource;
-use App\Models\Team;
+use App\Filament\Resources\Users\UserResource;
 use App\Models\TeamUser;
+use App\Models\User;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\AttachAction;
@@ -14,15 +14,14 @@ use Filament\Actions\DetachBulkAction;
 use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Support\Exceptions\Halt;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class TeamsRelationManager extends RelationManager
+class UsersRelationManager extends RelationManager
 {
-    protected static string $relationship = 'teams';
+    protected static string $relationship = 'users';
 
-    protected static ?string $relatedResource = TeamResource::class;
+    protected static ?string $relatedResource = UserResource::class;
 
     public function isReadOnly(): bool
     {
@@ -47,8 +46,7 @@ class TeamsRelationManager extends RelationManager
                         data: $data,
                         action: $action
                     )),
-            ])
-            ->recordActions([
+            ])->recordActions([
                 ActionGroup::make([
                     Action::make('update_team_user_role')
                         ->label('Alterar perfil')
@@ -62,12 +60,12 @@ class TeamsRelationManager extends RelationManager
                                 ->searchable()
                                 ->preload(),
                         ])
-                        ->before(fn (array $data, Action $action, Team $record) => $this->validateTeamUserRole(
+                        ->before(fn (array $data, Action $action, User $record) => $this->validateTeamUserRole(
                             data: $data,
                             action: $action,
-                            team: $record
+                            user: $record
                         ))
-                        ->action(fn (Team $record, array $data) => $record->pivot->update(['role' => $data['role']])),
+                        ->action(fn (User $record, array $data) => $record->pivot->update(['role' => $data['role']])),
                     DetachAction::make(),
                 ])->button(),
             ])
@@ -76,19 +74,16 @@ class TeamsRelationManager extends RelationManager
             ]);
     }
 
-    /**
-     * @throws Halt
-     */
-    private function validateTeamUserRole(array $data, Action $action, ?Team $team = null): void
+    private function validateTeamUserRole(array $data, Action $action, ?User $user = null): void
     {
-        if (! $team) {
-            $team = Team::query()->findOrFail($data['recordId']);
+        if (! $user) {
+            $user = User::query()->findOrFail($data['recordId']);
         }
 
-        if (TeamUser::query()->where('user_id', $this->getOwnerRecord()->id)->where('role', $data['role'])->exists()) {
+        if (TeamUser::query()->where('user_id', $user->id)->where('role', $data['role'])->exists()) {
             Notification::make()
                 ->title('Ação não permitida')
-                ->body("{$this->getOwnerRecord()->name} não pode ser vinculado a equipe $team->name como {$data['role']->getLabel()}, pois já possui esse perfil em outra equipe.")
+                ->body("$user->name não pode ser vinculado a equipe {$this->getOwnerRecord()->name} como {$data['role']->getLabel()}, pois já possui esse perfil em outra equipe.")
                 ->warning()
                 ->color('warning')
                 ->seconds(10)

@@ -6,6 +6,7 @@ use App\Filament\Resources\Teams\Pages\CreateTeam;
 use App\Filament\Resources\Teams\Pages\EditTeam;
 use App\Filament\Resources\Teams\Pages\ListTeams;
 use App\Filament\Resources\Teams\Pages\ViewTeam;
+use App\Filament\Resources\Teams\RelationManagers\UsersRelationManager;
 use App\Filament\Resources\Teams\Schemas\TeamForm;
 use App\Filament\Resources\Teams\Schemas\TeamInfolist;
 use App\Filament\Resources\Teams\Tables\TeamsTable;
@@ -46,7 +47,7 @@ class TeamResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            'users' => UsersRelationManager::class,
         ];
     }
 
@@ -54,7 +55,7 @@ class TeamResource extends Resource
     {
         return [
             'index' => ListTeams::route('/'),
-            // 'create' => CreateTeam::route('/create'),
+            'create' => CreateTeam::route('/create'),
             'view' => ViewTeam::route('/{record}'),
             'edit' => EditTeam::route('/{record}/edit'),
         ];

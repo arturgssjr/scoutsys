@@ -2,11 +2,15 @@
 
 namespace App\Filament\Resources\Teams\Tables;
 
-use App\Enums\TeamUserRole;
+use App\Filament\Resources\Users\RelationManagers\TeamsRelationManager;
+use App\Models\Team;
+use Filament\Actions\ForceDeleteAction;
+use Filament\Actions\RestoreAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
+use Livewire\Component as Livewire;
 
 class TeamsTable
 {
@@ -25,13 +29,17 @@ class TeamsTable
                 TextColumn::make('pivot.role')
                     ->label('Perfil')
                     ->badge()
-                    ->visible(fn (?TeamUserRole $state) => $state),
+                    ->visible(fn (Livewire $livewire) => $livewire instanceof TeamsRelationManager),
             ])
             ->filters([
                 TrashedFilter::make(),
             ])
             ->recordActions([
-                ViewAction::make()->iconButton(),
+                ViewAction::make()
+                    ->hidden(fn (Team $record) => $record->trashed())
+                    ->iconButton(),
+                RestoreAction::make()->iconButton(),
+                ForceDeleteAction::make()->iconButton(),
             ])
             ->toolbarActions([]);
     }
