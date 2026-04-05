@@ -19,6 +19,7 @@ class UserInfolist
                     ->columnSpanFull()
                     ->tabs([
                         Tabs\Tab::make('User')
+                            ->label('Usuário')
                             ->columns()
                             ->schema([
                                 TextEntry::make('id')
@@ -34,6 +35,7 @@ class UserInfolist
                                     ->date(format: 'd/m/Y'),
                             ]),
                         Tabs\Tab::make('Profile')
+                            ->label('Perfil')
                             ->columns()
                             ->schema([
                                 Grid::make(1)
@@ -54,6 +56,7 @@ class UserInfolist
                                     ->collection('profile-images'),
                             ]),
                         Tabs\Tab::make('Address')
+                            ->label('Endereço')
                             ->columns(4)
                             ->schema([
                                 TextEntry::make('address.zipcode')
@@ -79,6 +82,7 @@ class UserInfolist
                                     ->placeholder('Não informado'),
                             ]),
                         Tabs\Tab::make('Audit')
+                            ->label('Complemento')
                             ->columns(3)
                             ->schema([
                                 TextEntry::make('email_verified_at')
