@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Teams\Tables;
 
+use App\Enums\TeamUserRole;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
@@ -23,7 +24,8 @@ class TeamsTable
                     ->sortable(),
                 TextColumn::make('pivot.role')
                     ->label('Perfil')
-                    ->badge(),
+                    ->badge()
+                    ->visible(fn (?TeamUserRole $state) => $state),
             ])
             ->filters([
                 TrashedFilter::make(),
