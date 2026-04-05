@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\TeamUserRole;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -14,7 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('teams', function (Blueprint $table) {
-            $table->ulid('id');
+            $table->ulid('id')->unique();
             $table->string('name');
             $table->date('foundation_date');
             $table->softDeletes();
@@ -24,6 +25,7 @@ return new class extends Migration
         Schema::create('team_user', function (Blueprint $table) {
             $table->foreignIdFor(Team::class)->constrained();
             $table->foreignIdFor(User::class)->constrained();
+            $table->string('role')->default(TeamUserRole::Player->value);
             $table->timestamps();
 
             $table->unique(['team_id', 'user_id']);

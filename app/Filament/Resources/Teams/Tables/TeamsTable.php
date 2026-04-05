@@ -18,8 +18,12 @@ class TeamsTable
                     ->searchable(),
                 TextColumn::make('foundation_date')
                     ->label('Data de fundação')
+                    ->alignCenter()
                     ->date('d/m/Y')
                     ->sortable(),
+                TextColumn::make('pivot.role')
+                    ->label('Perfil')
+                    ->badge(),
             ])
             ->filters([
                 TrashedFilter::make(),

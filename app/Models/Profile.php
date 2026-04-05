@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 #[Guarded(['id'])]
 class Profile extends Model implements HasMedia
@@ -25,13 +24,6 @@ class Profile extends Model implements HasMedia
 
     public function registerMediaCollections(): void
     {
-        $this
-            ->addMediaCollection('profile-images')
-            ->registerMediaConversions(function (Media $media): void {
-                $this
-                    ->addMediaConversion('thumb')
-                    ->width(40)
-                    ->height(40);
-            });
+        $this->addMediaCollection('profile-images');
     }
 }

@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->ulid('id');
+            $table->ulid('id')->unique();
             $table->string('nickname')->nullable();
             $table->string('shirt_number')->nullable();
             $table->string('phone')->nullable();
-            $table->nullableUuidMorphs('profileable');
+            $table->nullableUlidMorphs('profileable');
             $table->timestamps();
         });
     }

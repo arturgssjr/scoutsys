@@ -82,15 +82,19 @@ class UserInfolist
                             ->columns(3)
                             ->schema([
                                 TextEntry::make('email_verified_at')
+                                    ->label('Verificado em')
                                     ->dateTime(format: 'd/m/Y H:i:s')
                                     ->placeholder('Não verificado'),
                                 TextEntry::make('created_at')
+                                    ->label('Cadastrado em')
                                     ->dateTime(format: 'd/m/Y H:i:s')
                                     ->placeholder('-'),
                                 TextEntry::make('updated_at')
+                                    ->label('Atualizado em')
                                     ->dateTime(format: 'd/m/Y H:i:s')
                                     ->placeholder('-'),
                                 TextEntry::make('deleted_at')
+                                    ->label('Removido em')
                                     ->dateTime(format: 'd/m/Y H:i:s')
                                     ->visible(fn (User $record): bool => $record->trashed()),
                             ]),

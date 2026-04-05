@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -58,11 +57,6 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
         return $this->morphOne(Address::class, 'addressable');
     }
 
-    public function categories(): MorphToMany
-    {
-        return $this->morphToMany(Category::class, 'categoryable');
-    }
-
     /**
      * Get the user's initials
      */
@@ -77,7 +71,10 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
 
     public function teams(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany(Team::class)
+            ->using(TeamUser::class)
+            ->withPivot('role')
+            ->withTimestamps();
     }
 
     public function canAccessPanel(Panel $panel): bool

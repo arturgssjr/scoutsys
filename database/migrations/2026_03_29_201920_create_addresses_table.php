@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('addresses', function (Blueprint $table) {
-            $table->ulid('id');
+            $table->ulid('id')->unique();
             $table->string('street')->nullable();
             $table->string('neighborhood')->nullable();
             $table->string('number')->nullable();
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('zipcode')->nullable();
-            $table->nullableUuidMorphs('addressable');
+            $table->nullableUlidMorphs('addressable');
             $table->timestamps();
         });
     }
